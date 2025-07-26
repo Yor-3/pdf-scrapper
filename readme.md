@@ -1,3 +1,7 @@
+python -m venv venv-name
+
+source venv-name/bin/activate
+
 pip install -r "requirements.txt"
 
 docker build -t pdf-outline-extractor:submission1 .
