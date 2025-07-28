@@ -1,7 +1,6 @@
 import fitz  
 import os
 import json
-import pymupdf
 
 def get_heading_level(font_size):
     if font_size >= 18:
@@ -48,12 +47,12 @@ def main():
     input_dir = "./input"
     output_dir = "./output"
 
-    filename = "sample3.pdf"
+    filename = input("Enter the PDF filename (e.g., sample.pdf): ").strip()
 
     file_path = os.path.join(input_dir, filename)
 
     if not os.path.exists(file_path):
-        print(f"❌ File '{filename}' not found in 'input' folder.")
+        print(f"File '{filename}' not found in 'input' folder.")
         return
 
     result = process_pdf(file_path)
@@ -62,7 +61,7 @@ def main():
     with open(os.path.join(output_dir, output_filename), "w", encoding="utf-8") as out_file:
         json.dump(result, out_file, indent=2, ensure_ascii=False)
 
-    print(f"✅ JSON saved to: output/{output_filename}")
+    print(f"JSON saved to: output/{output_filename}")
 
 if __name__ == "__main__":
     main()
